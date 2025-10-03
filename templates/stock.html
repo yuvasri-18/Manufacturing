@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Stock Ledger</h2>
+
+<div class="form-box">
+    <form method="POST">
+        <input type="text" name="name" placeholder="Item Name" required>
+        <input type="number" name="quantity" placeholder="Quantity" required>
+        <select name="type" required>
+            <option value="">Select Type</option>
+            <option value="Raw">Raw Material</option>
+            <option value="Finished">Finished Good</option>
+        </select>
+        <button type="submit">Add Stock</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in stocks %}
+        <tr>
+            <td>{{ s.id }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.quantity }}</td>
+            <td>{{ s.type }}</td>
+            <td>
+                <a href="{{ url_for('delete_stock', id=s.id) }}" class="btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

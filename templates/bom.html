@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Bill of Materials (BOM)</h2>
+
+<div class="form-box">
+    <form method="POST">
+        <input type="text" name="name" placeholder="BOM Name" required>
+        <input type="text" name="components" placeholder="Stock IDs (comma-separated)" required>
+        <button type="submit">Add BOM</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Components</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for b in boms %}
+        <tr>
+            <td>{{ b.id }}</td>
+            <td>{{ b.name }}</td>
+            <td>
+                {% for c in b.components %}
+                    {{ c.name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                <a href="{{ url_for('delete_bom', id=b.id) }}" class="btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

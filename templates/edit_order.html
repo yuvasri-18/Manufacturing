@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Order</h2>
+
+<div class="form-box">
+    <form method="POST">
+        <input type="text" name="customer_name" placeholder="Customer Name" value="{{ order.customer_name }}" required>
+        <input type="text" name="product_name" placeholder="Product Name" value="{{ order.product_name }}" required>
+
+        <label>Product Availability:</label>
+        <select name="availability" required>
+            <option value="Available" {% if order.availability == "Available" %}selected{% endif %}>Available</option>
+            <option value="Not Available" {% if order.availability == "Not Available" %}selected{% endif %}>Not Available</option>
+        </select>
+
+        <label>Status:</label>
+        <select name="status" required>
+            <option value="In Progress" {% if order.status == "In Progress" %}selected{% endif %}>In Progress</option>
+            <option value="Completed" {% if order.status == "Completed" %}selected{% endif %}>Completed</option>
+            <option value="Delayed" {% if order.status == "Delayed" %}selected{% endif %}>Delayed</option>
+            <option value="Cancelled" {% if order.status == "Cancelled" %}selected{% endif %}>Cancelled</option>
+        </select>
+
+        <label>Quantity:</label>
+        <select name="quantity" required>
+            {% for i in range(1, 101) %}
+            <option value="{{ i }}" {% if order.quantity == i %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Product Placed Date:</label>
+        <input type="date" name="placed_date" value="{{ order.placed_date }}" required>
+
+        <label>Delivery Date:</label>
+        <input type="date" name="delivery_date" value="{{ order.delivery_date }}" required>
+
+        <button type="submit">Update Order</button>
+    </form>
+</div>
+{% endblock %}

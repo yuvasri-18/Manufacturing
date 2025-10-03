@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Work Orders</h2>
+
+<div class="form-box">
+    <form method="POST">
+        <input type="text" name="order_id" placeholder="Manufacturing Order ID" required>
+        <input type="text" name="assigned_to" placeholder="Operator ID" required>
+        <select name="status" required>
+            <option value="">Select Status</option>
+            <option value="Planned">Planned</option>
+            <option value="Started">Started</option>
+            <option value="Paused">Paused</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <textarea name="comments" placeholder="Comments"></textarea>
+        <button type="submit">Add Work Order</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Order ID</th>
+            <th>Operator ID</th>
+            <th>Status</th>
+            <th>Comments</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for w in work_orders %}
+        <tr>
+            <td>{{ w.id }}</td>
+            <td>{{ w.order_id }}</td>
+            <td>{{ w.assigned_to }}</td>
+            <td>{{ w.status }}</td>
+            <td>{{ w.comments }}</td>
+            <td>
+                <a href="{{ url_for('delete_work_order', id=w.id) }}" class="btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

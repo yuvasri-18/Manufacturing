@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Work Centers</h2>
+
+<div class="form-box">
+    <form method="POST">
+        <input type="text" name="name" placeholder="Work Center Name" required>
+        <input type="number" name="cost_per_hour" placeholder="Cost per Hour" required>
+        <input type="number" name="capacity" placeholder="Capacity" required>
+        <button type="submit">Add Work Center</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Cost/Hour</th>
+            <th>Capacity</th>
+            <th>Downtime</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for wc in work_centers %}
+        <tr>
+            <td>{{ wc.id }}</td>
+            <td>{{ wc.name }}</td>
+            <td>{{ wc.cost_per_hour }}</td>
+            <td>{{ wc.capacity }}</td>
+            <td>{{ wc.downtime }}</td>
+            <td>
+                <a href="{{ url_for('delete_work_center', id=wc.id) }}" class="btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

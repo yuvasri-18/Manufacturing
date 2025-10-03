@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #1f2937;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    align-items: center;
+}
+
+.header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.container {
+    padding: 20px 40px;
+}
+
+.auth-box, .form-box, .profile-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 30px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.auth-box input, .form-box input, .form-box select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.auth-box button, .form-box button, .btn-export {
+    padding: 10px 15px;
+    background-color: #2563eb;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.kpi-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.kpi-card {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.kpi-card.in-progress { background-color: #fef3c7; }
+.kpi-card.completed { background-color: #dcfce7; }
+.kpi-card.delayed { background-color: #fee2e2; }
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.table th {
+    background-color: #2563eb;
+    color: #fff;
+}
+
+.flash-msg {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.flash-msg li {
+    background: #dcfce7;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
